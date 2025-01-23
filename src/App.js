@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Sun, Moon } from 'lucide-react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const navItems = [
   { id: 'header', label: 'Home' },
