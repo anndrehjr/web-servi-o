@@ -32,7 +32,7 @@ const services = [
   {
     title: "Marketing Digital",
     description: "Estratégias personalizadas para aumentar sua visibilidade online e atrair clientes.",
-    imgSrc: "/imagens/MD.png",
+    imgSrc: "/imagens/MD.jpeg",
     features: ["SEO", "Gestão de Mídias Sociais", "Email Marketing", "Google Ads"],
     whatsappUrl:
       "https://wa.me/5518996791377?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20Marketing%20Digital",
