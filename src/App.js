@@ -95,47 +95,10 @@ export default function App() {
     <>
       {loading && <LoadingAnimation />}
       <div className="font-sans bg-gray-100 dark:bg-gray-950 text-gray-800 dark:text-gray-100">
-        <section ref={sectionRefs.header} className="relative">
-          <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-                <img
-                  src="/imagens/imagde.png"
-                  className="d-block w-full h-screen object-cover"
-                  alt="Serviços de Desenvolvimento Web"
-                />
-                <div className="carousel-caption d-none d-md-block bg-black bg-opacity-70 rounded p-4">
-                  <h5 className="text-2xl font-bold">Desenvolvimento Web</h5>
-                  <p className="text-lg">Soluções web personalizadas para seu negócio</p>
-                </div>
-              </div>
-              <div className="carousel-item">
-                <img
-                  src="/imagens/image.png"
-                  className="d-block w-full h-screen object-cover"
-                  alt="Serviços de Design"
-                />
-                <div className="carousel-caption d-none d-md-block bg-black bg-opacity-70 rounded p-4">
-                  <h5 className="text-2xl font-bold">Design Gráfico</h5>
-                  <p className="text-lg">Identidade visual que destaca sua marca</p>
-                </div>
-              </div>
-            </div>
-            <Button className="carousel-control-prev" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Anterior</span>
-            </Button>
-            <Button className="carousel-control-next" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Próximo</span>
-            </Button>
-          </div>
-        </section>
-
         {isHeaderVisible && (
           <header className="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700">
             <nav className="container mx-auto p-2 flex flex-wrap justify-between items-center">
-              <img src="/imagens/logo.png" alt="ASA Personalizados Logo" className="h-12 w-auto" />
+              <h1 className="text-xl font-bold text-gray-800 dark:text-gray-200">ASA Personalizados</h1>
               <ul className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-2 sm:mt-0">
                 {navItems.map((item) => (
                   <li key={item.id} className="relative group">
