@@ -38,7 +38,7 @@ export function NavBar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-400 dark:to-blue-600 bg-clip-text text-transparent">
-            ASA Dev
+            ASA Personalizados
           </span>
 
           {/* Menu para telas maiores */}
@@ -53,6 +53,17 @@ export function NavBar() {
                 <span>{item.label}</span>
               </button>
             ))}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? (
+                <Moon className="w-5 h-5 text-blue-600" />
+              ) : (
+                <Sun className="w-5 h-5 text-yellow-500" />
+              )}
+            </button>
           </div>
 
           {/* Botões para telas menores */}
@@ -80,19 +91,6 @@ export function NavBar() {
               )}
             </button>
           </div>
-
-          {/* Botão de tema para telas maiores */}
-          <button
-            onClick={toggleTheme}
-            className="hidden md:block p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            aria-label="Toggle theme"
-          >
-            {theme === "light" ? (
-              <Moon className="w-5 h-5 text-blue-600" />
-            ) : (
-              <Sun className="w-5 h-5 text-yellow-500" />
-            )}
-          </button>
         </div>
       </div>
 
