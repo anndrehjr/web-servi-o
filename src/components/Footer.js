@@ -25,11 +25,10 @@ export function Footer() {
               </a>
               <a href="mailto:contato@asadev.com" className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
                 <Mail className="w-5 h-5 mr-2" />
-                contato@asadev.com
-              </a>
+                asapersonalizados2025@gmail.com              </a>
               <div className="flex items-center text-gray-600 dark:text-gray-300">
                 <MapPin className="w-5 h-5 mr-2" />
-                Presidente Prudente, SP
+                Santo Anastácio, SP
               </div>
             </div>
           </div>
@@ -49,7 +48,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-gray-600 dark:text-gray-300">
-          <p>&copy; {new Date().getFullYear()} ASA Dev. Todos os direitos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} André Aguiar Dev. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

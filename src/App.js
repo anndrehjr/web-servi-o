@@ -27,6 +27,7 @@ const services = [
     whatsappUrl:
       "https://wa.me/5518996791377?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20Design%20Gráfico",
     isPrimary: true, // Serviço em destaque
+    link: "/servicos/desenvolvimento-web", // Link para a página de detalhes do serviço
   },
   {
     title: "Marketing Digital",
