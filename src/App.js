@@ -36,6 +36,31 @@ const services = [
     whatsappUrl:
       "https://wa.me/5518996791377?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20Marketing%20Digital",
   },
+  {
+    title: "Artigos Personalizados",
+    description: "Elaborando artigos, blog posts, e-books e documentos técnicos.",
+    imgSrc: "/imagens/personalizados-03.webp",
+    features: ["Artigos", "Blog Posts", "E-books", "Documentos Técnicos"],
+    whatsappUrl:
+      "https://wa.me/5518996798352?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20Artigos%20Personalizados",
+  },
+  {
+    
+    title: "Outros Serviços",
+    description: "Consultoria em TI, suporte técnico, manutenção de computadores e notebooks.",
+    imgSrc: "/imagens/manuteção.jpg",
+    features: ["Consultoria e Suporte", "Suporte Técnico", "Manutenção de Computadores", "Manutenção de Notebook"],
+    whatsappUrl:
+      "https://wa.me/5518996791377?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20Consultoria%20e%20Suporte",
+  },
+  {
+    title: "Outros Serviços",
+    description: "Consultoria em TI, suporte técnico, manutenção de computadores e notebooks.",
+    imgSrc: "/imagens/manutenção.jpg",
+    features: ["Consultoria e Suporte", "Suporte Técnico", "Manutenção de Computadores", "Manutenção de Notebook"],
+    whatsappUrl:
+      "https://wa.me/5518996791377?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20Consultoria%20e%20Suporte",
+  },
  
 ]
 
