@@ -1,31 +1,15 @@
-import React, { useState, useRef, useEffect } from "react"
-import {
-  Sun,
-  Moon,
-  Phone,
-  Mail,
-  MapPin,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Home,
-  Info,
-  Briefcase,
-  PhoneCall,
-} from "lucide-react"
-import { Button } from "./components/Button"
-import { Card } from "./components/Card"
-import LoadingAnimation from "./components/LoadingAnimation"
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap/dist/js/bootstrap.bundle.min"
+import React from "react"
+import { ArrowRight } from "lucide-react"
+import { NavBar } from "./components/NavBar"
+import { ServiceCard } from "./components/ServiceCard"
+import { Footer } from "./components/Footer"
 
-const navItems = [
-  { id: "header", label: "Home", icon: Home },
-  { id: "sobre", label: "Sobre", icon: Info },
-  { id: "servicos", label: "Serviços", icon: Briefcase },
-  { id: "footer", label: "Contatos", icon: PhoneCall },
-]
+// Arquivo principal que monta toda a aplicação
+// - Importa e organiza todos os componentes
+// - Define os dados dos serviços
+// - Estrutura o layout geral do site
 
+// Dados dos serviços oferecidos
 const services = [
   {
     title: "Desenvolvimento Web",
@@ -42,6 +26,8 @@ const services = [
     features: ["Logotipos", "Branding", "Material Impresso", "Mídias Sociais"],
     whatsappUrl:
       "https://wa.me/5518996791377?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20Design%20Gráfico",
+    isPrimary: true, // Serviço em destaque
+    link: "/servicos/desenvolvimento-web", // Link para a página de detalhes do serviço
   },
   {
     title: "Marketing Digital",
@@ -51,297 +37,104 @@ const services = [
     whatsappUrl:
       "https://wa.me/5518996791377?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20Marketing%20Digital",
   },
+  {
+    title: "Artigos Personalizados",
+    description: "Elaborando artigos, blog posts, e-books e documentos técnicos.",
+    imgSrc: "/imagens/personalizados-03.webp",
+    features: ["Artigos", "Blog Posts", "E-books", "Documentos Técnicos"],
+    whatsappUrl:
+      "https://wa.me/5518996798352?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20Artigos%20Personalizados",
+  },
+  {
+    
+    title: "Outros Serviços",
+    description: "Consultoria em TI, suporte técnico, manutenção de computadores e notebooks.",
+    imgSrc: "/imagens/manuteção.jpg",
+    features: ["Consultoria e Suporte", "Suporte Técnico", "Manutenção de Computadores", "Manutenção de Notebook"],
+    whatsappUrl:
+      "https://wa.me/5518996791377?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20Consultoria%20e%20Suporte",
+  },
+  {
+    title: "Outros Serviços",
+    description: "Consultoria em TI, suporte técnico, manutenção de computadores e notebooks.",
+    imgSrc: "/imagens/manutenção.jpg",
+    features: ["Consultoria e Suporte", "Suporte Técnico", "Manutenção de Computadores", "Manutenção de Notebook"],
+    whatsappUrl:
+      "https://wa.me/5518996791377?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20seus%20serviços%20de%20Consultoria%20e%20Suporte",
+  },
+ 
 ]
 
-export default function App() {
-  const [theme, setTheme] = useState("light")
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true)
-  const [loading, setLoading] = useState(true)
-
-  const sectionRefs = {
-    header: useRef(null),
-    sobre: useRef(null),
-    servicos: useRef(null),
-    footer: useRef(null),
-  }
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme")
-    if (!savedTheme) {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
-      setTheme(prefersDark ? "dark" : "light")
-    }
-  }, [])
-
-  useEffect(() => {
-    document.body.classList.toggle("dark", theme === "dark")
-  }, [theme])
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false)
-    }, 2000)
-
-    return () => clearTimeout(timer)
-  }, [])
-
-  const toggleTheme = () => setTheme((prev) => (prev === "dark" ? "light" : "dark"))
-
-  const scrollToSection = (id) => {
-    sectionRefs[id]?.current?.scrollIntoView({ behavior: "smooth" })
-  }
-
+function App() {
   return (
-    <>
-      {loading && <LoadingAnimation />}
-      <div className="font-sans bg-gray-100 dark:bg-gray-950 text-gray-800 dark:text-gray-100">
-        <section ref={sectionRefs.header} className="relative">
-          <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
-            <div className="carousel-inner">
-              <div className="carousel-item active">
-                <img
-                  src="/imagens/imagde.png"
-                  className="d-block w-full h-screen object-cover"
-                  alt="Serviços de Desenvolvimento Web"
-                />
-                <div className="carousel-caption d-none d-md-block bg-black bg-opacity-70 rounded p-4">
-                  <h5 className="text-2xl font-bold">Desenvolvimento Web</h5>
-                  <p className="text-lg">Soluções web personalizadas para seu negócio</p>
-                </div>
-              </div>
-              <div className="carousel-item">
-                <img
-                  src="/imagens/image.png"
-                  className="d-block w-full h-screen object-cover"
-                  alt="Serviços de Design"
-                />
-                <div className="carousel-caption d-none d-md-block bg-black bg-opacity-70 rounded p-4">
-                  <h5 className="text-2xl font-bold">Design Gráfico</h5>
-                  <p className="text-lg">Identidade visual que destaca sua marca</p>
-                </div>
-              </div>
-            </div>
-            <Button className="carousel-control-prev" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Anterior</span>
-            </Button>
-            <Button className="carousel-control-next" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Próximo</span>
-            </Button>
+    <div className="min-h-screen bg-white dark:bg-gray-950">
+      <NavBar />
+
+      {/* Seção Hero com Vídeo de Fundo */}
+      <div id="home" className="relative h-screen">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="/placeholder.svg"
+        >
+          <source src="/video.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/70" />
+        <div className="relative h-full flex items-center justify-center text-center">
+          <div className="max-w-3xl mx-auto px-4">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+              Transformando Ideias em Realidade Digital
+            </h1>
+            <p className="text-xl text-gray-300 mb-8">
+              Desenvolvimento web profissional e soluções personalizadas para o seu negócio
+            </p>
+            <a
+              href="#servicos"
+              className="inline-flex items-center px-8 py-3 text-lg font-medium text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded-full transition-colors"
+            >
+              Nossos Serviços
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </a>
           </div>
-        </section>
-
-        {isHeaderVisible && (
-          <header className="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700">
-            <nav className="container mx-auto p-2 flex flex-wrap justify-between items-center">
-              <img src="/imagens/logo.png" alt="ASA Personalizados Logo" className="h-12 w-auto" />
-              <ul className="flex flex-wrap justify-center gap-2 sm:gap-4 mt-2 sm:mt-0">
-                {navItems.map((item) => (
-                  <li key={item.id} className="relative group">
-                    <Button
-                      onClick={() => scrollToSection(item.id)}
-                      className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center gap-1 p-2"
-                    >
-                      <item.icon className="h-5 w-5" />
-                      <span className="text-xs sm:text-sm hidden sm:inline">{item.label}</span>
-                    </Button>
-                    <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none sm:hidden">
-                      {item.label}
-                    </span>
-                  </li>
-                ))}
-                <li>
-                  <Button
-                    onClick={toggleTheme}
-                    className="p-2 bg-gray-200 dark:bg-gray-700 rounded-full transition-colors"
-                  >
-                    {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-                  </Button>
-                </li>
-              </ul>
-            </nav>
-          </header>
-        )}
-
-        <main>
-          <section ref={sectionRefs.sobre} className="py-20 bg-white dark:bg-gray-200">
-            <div className="container mx-auto px-4">
-              <h1 className="text-5xl font-bold mb-8 text-center text-black dark:text-black">ASA Personalizados</h1>
-              <h2 className="text-3xl text-gray-600 dark:text-black mb-10 text-center">
-                Transformando Ideias em Realidade
-              </h2>
-              <p className="text-xl text-center max-w-3xl mx-auto leading-relaxed text-gray-700 dark:text-black">
-                Somos especialistas em criar soluções digitais personalizadas que impulsionam o sucesso do seu negócio.
-                Com uma equipe apaixonada e criativa, oferecemos serviços de desenvolvimento web, design gráfico e
-                marketing digital que transformam sua visão em resultados tangíveis.
-              </p>
-            </div>
-          </section>
-
-          <section ref={sectionRefs.servicos} className="py-20 bg-gray-100 dark:bg-gray-800">
-            <div className="container mx-auto px-4">
-              <h1 className="text-5xl font-bold text-center mb-16">Nossos Serviços</h1>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                {services.map((service, index) => (
-                  <Card
-                    key={index}
-                    className="bg-white dark:bg-black rounded-xl overflow-hidden shadow-lg dark:shadow-xl hover:shadow-2xl transition-shadow duration-300"
-                  >
-                    <img
-                      src={service.imgSrc || "/placeholder.svg"}
-                      alt={service.title}
-                      className="w-full h-56 object-cover"
-                    />
-                    <div className="p-6">
-                      <h2 className="text-2xl font-bold mb-4 text-gray-600 dark:text-gray-800">{service.title}</h2>
-                      <p className="text-gray-600 dark:text-gray-900 mb-6">{service.description}</p>
-                      <ul className="mb-8">
-                        {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center mb-2">
-                            <svg
-                              className="w-5 h-5 mr-2 text-blue-500"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M5 13l4 4L19 7"
-                              ></path>
-                            </svg>
-                            <span className="text-gray-700 dark:text-gray-900">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <a
-                        href={service.whatsappUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-semibold transition duration-300"
-                      >
-                        Solicitar Orçamento
-                      </a>
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          <footer ref={sectionRefs.footer} className="bg-gray-900 text-white py-16">
-            <div className="container mx-auto px-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                <div>
-                  <h3 className="text-3xl font-bold mb-6">ASA Personalizados</h3>
-                  <p className="mb-6 text-gray-300">Transformando ideias em soluções digitais inovadoras desde 2022.</p>
-                  <div className="flex space-x-4">
-                    <a href="#" className="text-white hover:text-blue-400 transition-colors">
-                      <Facebook size={24} />
-                    </a>
-                    <a href="#" className="text-white hover:text-pink-400 transition-colors">
-                      <Instagram size={24} />
-                    </a>
-                    <a href="#" className="text-white hover:text-blue-600 transition-colors">
-                      <Linkedin size={24} />
-                    </a>
-                  </div>
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-6">Serviços</h4>
-                  <ul className="space-y-3">
-                    <li>
-                      <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                        Desenvolvimento Web
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                        Design Gráfico
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                        Marketing Digital
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                        Consultoria em TI
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-6">Links Úteis</h4>
-                  <ul className="space-y-3">
-                    <li>
-                      <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                        Sobre Nós
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                        Projetos
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                        Blog
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                        Política de Privacidade
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-xl font-semibold mb-6">Contato</h4>
-                  <ul className="space-y-3">
-                    <li className="flex items-center">
-                      <Phone size={18} className="mr-2 text-blue-400" />
-                      <a
-                        href="https://wa.me/5518996791377"
-                        className="text-gray-300 hover:text-white transition-colors"
-                      >
-                        (18) 99679-1377
-                      </a>
-                    </li>
-                    <li className="flex items-center">
-                      <Phone size={18} className="mr-2 text-blue-400" />
-                      <a
-                        href="https://wa.me/5518996798352"
-                        className="text-gray-300 hover:text-white transition-colors"
-                      >
-                        (18) 99679-8352
-                      </a>
-                    </li>
-                    <li className="flex items-center">
-                      <Mail size={18} className="mr-2 text-blue-400" />
-                      <a href="mailto:anndreh01@gmail.com" className="text-gray-300 hover:text-white transition-colors">
-                        anndreh01@gmail.com
-                      </a>
-                    </li>
-                    <li className="flex items-center">
-                      <MapPin size={18} className="mr-2 text-blue-400" />
-                      <span className="text-gray-300">Ribeirão Dos Indios, SP</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-                <p className="text-gray-400">&copy; 2023 ASA Personalizados. Todos os direitos reservados.</p>
-              </div>
-            </div>
-          </footer>
-        </main>
+        </div>
       </div>
-    </>
+
+      {/* Seção Sobre (adicionada) */}
+      <section id="sobre" className="py-24 bg-gray-100 dark:bg-gray-800">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-white">Sobre Nós</h2>
+          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto text-center">
+            A ASA Personalizados é uma empresa especializada em soluções digitais, focada em transformar ideias em realidade. Nossa
+            equipe de profissionais altamente qualificados está comprometida em fornecer serviços de alta qualidade em
+            desenvolvimento web, design gráfico e marketing digital.
+          </p>
+        </div>
+      </section>
+
+      {/* Seção de Serviços */}
+      <section id="servicos" className="py-24 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-white">
+            Nossos Serviços
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <ServiceCard key={index} {...service} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer (com id "contatos") */}
+      <div id="contatos">
+        <Footer />
+      </div>
+    </div>
   )
 }
+
+export default App
 
